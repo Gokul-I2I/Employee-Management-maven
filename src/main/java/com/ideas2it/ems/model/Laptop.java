@@ -1,6 +1,5 @@
 package com.ideas2it.ems.model;
 
-import com.ideas2it.ems.model.Employee;
 import javax.persistence.Column;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
@@ -9,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
 /**

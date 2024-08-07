@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ideas2it.ems.exception.MyException;
 import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Employee;
 
 /**
  * This class handle the all operation related to Department database
@@ -13,13 +12,13 @@ import com.ideas2it.ems.model.Employee;
 public interface DepartmentDao {
 
    /**
-     * Create the new department by name
-     *
-     * @param departmentName : name of the new department
-     *
-     * @return department details
-     * @throws MyException
-     */
+    * Create the new department by name
+    *
+    * @param department : new department details
+    *
+    * @return department details
+    * @throws MyException
+    */
     public Department createDepartment(Department department) throws MyException;
 
     /**

@@ -192,6 +192,6 @@ public class DepartmentController {
             } catch (Exception e) {
                 logger.info(e.getMessage());
             }
-	}
+	    }
     }  
 }

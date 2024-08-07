@@ -6,15 +6,12 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session; 
-import org.hibernate.Transaction; 
-import org.hibernate.query.Query;
+import org.hibernate.Transaction;
 import org.hibernate.HibernateException; 
 
 import com.ideas2it.ems.exception.MyException;
-import com.ideas2it.ems.department.dao.DepartmentDao;
 import com.ideas2it.ems.helper.HibernateConnection;
 import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Employee;
 
 /**
  * This class handle the all operation related to Department database

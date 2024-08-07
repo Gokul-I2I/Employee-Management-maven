@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.ideas2it.ems.exception.MyException;
-import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Project;
 

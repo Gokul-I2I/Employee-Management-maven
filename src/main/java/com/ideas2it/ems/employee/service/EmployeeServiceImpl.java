@@ -7,11 +7,9 @@ import com.ideas2it.ems.department.service.DepartmentService;
 import com.ideas2it.ems.department.service.DepartmentServiceImpl;
 import com.ideas2it.ems.employee.dao.EmployeeDao;
 import com.ideas2it.ems.employee.dao.EmployeeDaoImpl;
-import com.ideas2it.ems.employee.service.EmployeeService;
 import com.ideas2it.ems.exception.MyException;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.model.Laptop;
 
 /**
@@ -25,11 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Department> retrieveDepartments() throws MyException {
         return departmentService.retrieveDepartments();
-    }
-
-    @Override
-    public boolean isDepartmentIdPresent(int employeeDepartmentId) throws MyException {
-        return departmentService.isDepartmentIdPresent(employeeDepartmentId);
     }
 
     @Override

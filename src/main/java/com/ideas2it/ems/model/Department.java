@@ -3,23 +3,15 @@ package com.ideas2it.ems.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Project;
-import com.ideas2it.ems.utils.Validator;
 import javax.persistence.Column;
-import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToMany;
+
 
 /**
  * This class model of the Department details 

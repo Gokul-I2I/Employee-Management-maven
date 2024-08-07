@@ -9,16 +9,14 @@ import org.hibernate.HibernateException;
 
 import com.ideas2it.ems.helper.HibernateConnection;
 import com.ideas2it.ems.exception.MyException;
-import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 
 /**
  * This class handle the employee storing operation related based on user request
  * @author Gokul
  */
 public class EmployeeDaoImpl implements EmployeeDao {
-    private static  Logger logger = LogManager.getLogger(EmployeeDaoImpl.class);
+    private static final Logger logger = LogManager.getLogger(EmployeeDaoImpl.class);
 
     @Override
     public Employee createEmployee(Employee employee) throws MyException {

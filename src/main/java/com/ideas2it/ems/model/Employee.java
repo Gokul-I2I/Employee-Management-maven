@@ -5,10 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.lang.StringBuilder;
 
-import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Project;
-import com.ideas2it.ems.model.Laptop;
-import com.ideas2it.ems.utils.Validator;
 import javax.persistence.Column;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
@@ -21,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 
 /**

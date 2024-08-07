@@ -9,7 +9,6 @@ import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.project.dao.ProjectDao;
 import com.ideas2it.ems.project.dao.ProjectDaoImpl;
-import com.ideas2it.ems.project.service.ProjectService;
 
 /**
  * This class handle the all operation related to Project CURD based on user request

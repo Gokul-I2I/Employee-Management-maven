@@ -3,13 +3,9 @@ package com.ideas2it.ems.employee.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.ideas2it.ems.department.service.DepartmentServiceImpl;
-import com.ideas2it.ems.employee.dao.EmployeeDaoImpl;
-import com.ideas2it.ems.employee.service.EmployeeServiceImpl;
 import com.ideas2it.ems.exception.MyException;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.model.Laptop;
 
 /**
@@ -24,16 +20,6 @@ public interface EmployeeService {
      * @throws MyException
      */
     public List<Department> retrieveDepartments() throws MyException;
-
-    /**
-     * Get the department is present or not by its id
-     *
-     * @param departmentId : id of the department
-     *
-     * @return boolean : department is present or not  
-     * @throws MyException
-     */
-    public boolean isDepartmentIdPresent(int departmentId) throws MyException;
 
     /**
      * Used to create employee with name, dateOfBirth, department id, laptop details

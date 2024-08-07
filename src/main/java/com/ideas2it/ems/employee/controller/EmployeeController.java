@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import com.ideas2it.ems.exception.MyException;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.model.Laptop;
 import com.ideas2it.ems.employee.service.EmployeeService;
 import com.ideas2it.ems.employee.service.EmployeeServiceImpl;
@@ -286,7 +285,7 @@ public class EmployeeController {
                         logger.info("Department changed");
                         System.out.printf("| %-5s | %-20s | %-8s | %-20s | %-20s %n", employee.getId(), employee.getName(), currentAge, employee.getDepartment().getDepartmentName(), employee.displayProjects());
                     } else {
-                        logger.info(" Department Not Found " + '\n' + " Enter Correct ID ");
+                        logger.info(" Department Not Found : Enter Correct ID ");
                     }
                 } else if (option == 4) {
                     System.out.print("Enter new Laptop Model : ");

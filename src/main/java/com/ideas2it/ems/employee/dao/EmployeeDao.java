@@ -3,9 +3,7 @@ package com.ideas2it.ems.employee.dao;
 import java.util.List;
 
 import com.ideas2it.ems.exception.MyException;
-import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 
 /**
  * This class handle the employee storing operation related based on user request

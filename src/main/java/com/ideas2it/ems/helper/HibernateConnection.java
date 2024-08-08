@@ -8,12 +8,14 @@ import com.ideas2it.ems.exception.MyException;
 
 /**
  * This class connect the DataBase
+ *
  * @author Gokul
  */
 public class HibernateConnection {
 
     /**
-     *  To connect the database
+     * To connect the database
+     *
      * @throws MyException
      */
     public static Session connection() throws MyException {

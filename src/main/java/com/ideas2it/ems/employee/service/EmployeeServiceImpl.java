@@ -8,6 +8,8 @@ import com.ideas2it.ems.department.service.DepartmentServiceImpl;
 import com.ideas2it.ems.employee.dao.EmployeeDao;
 import com.ideas2it.ems.employee.dao.EmployeeDaoImpl;
 import com.ideas2it.ems.exception.MyException;
+import com.ideas2it.ems.laptop.service.LaptopService;
+import com.ideas2it.ems.laptop.service.LaptopServiceImpl;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Laptop;
@@ -19,6 +21,7 @@ import com.ideas2it.ems.model.Laptop;
 public class EmployeeServiceImpl implements EmployeeService {
     EmployeeDao employeeDao = new EmployeeDaoImpl();
     DepartmentService departmentService = new DepartmentServiceImpl();
+    LaptopService laptopService = new LaptopServiceImpl();
 
     @Override
     public List<Department> retrieveDepartments() throws MyException {
@@ -44,7 +47,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void updateEmployee(Employee employee) throws MyException {
         employeeDao.updateEmployee(employee);
-    } 
+    }
+
+    @Override
+    public void updateEmployee(Employee employee, String laptopModel) throws MyException {
+        laptopService.updateLaptopName(laptopModel, employee.getLaptop().getId());
+    }
+
+    @Override
+    public void updateEmployeeDepartment(Employee employee, String departmentName) throws MyException {
+        departmentService.updateDepartmentName(departmentName, employee.getDepartment().getDepartmentId());
+    }
 
     @Override
     public List<Employee> retrieveEmployees() throws MyException {

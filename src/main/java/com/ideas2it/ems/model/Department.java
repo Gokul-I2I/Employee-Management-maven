@@ -14,16 +14,17 @@ import javax.persistence.OneToMany;
 
 
 /**
- * This class model of the Department details 
+ * This class model of the Department details
+ *
  * @author Gokul
  */
 @Entity
-@Table (name = "department")
+@Table(name = "department")
 public class Department {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="department_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "department_id")
     private int departmentId;
 
     @Column(name = "department_name", unique = true)
@@ -34,20 +35,21 @@ public class Department {
 
     @OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
     Set<Employee> employees;
- 
-    public Department(){
+
+    public Department() {
     }
- 
+
     /**
-     * Department constructor 
-     * @param departmentName  
+     * Department constructor
+     *
+     * @param departmentName
      */
-    public Department(String departmentName) { 
-        this.departmentId = departmentId;  
+    public Department(String departmentName) {
+        this.departmentId = departmentId;
         this.departmentName = departmentName.toUpperCase();
-        this.employees = new HashSet<Employee>(); 
-        this.isDeleted = false;  
-    }   
+        this.employees = new HashSet<Employee>();
+        this.isDeleted = false;
+    }
 
     public int getDepartmentId() {
         return departmentId;
@@ -60,7 +62,7 @@ public class Department {
     public String getDepartmentName() {
         return departmentName;
     }
- 
+
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
@@ -71,11 +73,11 @@ public class Department {
 
     public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
-    }   
- 
+    }
+
     public Set<Employee> getEmployees() {
         return employees;
-    } 
+    }
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;

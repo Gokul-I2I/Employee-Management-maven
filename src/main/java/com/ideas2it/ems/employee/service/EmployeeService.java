@@ -72,22 +72,43 @@ public interface EmployeeService {
     public void updateEmployee(Employee employee) throws MyException;
 
     /**
-     * Get the employee details by its id
+     * Update employee laptop model details
      *
-     * @param id : id of the employee
+     * @param employee : employee details
+     * @param laptopModel : laptop new model details
      *
-     * @return Employee : details of the employee
      * @throws MyException
      */
+    public void updateEmployee(Employee employee, String laptopModel) throws MyException;
+
+    /**
+     * Update employee department  details
+     *
+     * @param employee : employee details
+     * @param departmentName : new department name details
+     *
+     * @throws MyException
+     */
+    public void updateEmployeeDepartment(Employee employee, String departmentName) throws MyException ;
+
+        /**
+         * Get the employee details by its id
+         *
+         * @param id : id of the employee
+         *
+         * @return Employee : details of the employee
+         * @throws MyException
+         */
     public Employee retrieveEmployeeId(int id) throws MyException;
 
     /**
      * Get the department details by its id
      *
-     * @param id : id of the department
+     * @param departmentId : id of the department
      *
      * @return department : details of the department
      * @throws MyException
      */
     public Department retrieveDepartment(int departmentId) throws MyException;
+
 }

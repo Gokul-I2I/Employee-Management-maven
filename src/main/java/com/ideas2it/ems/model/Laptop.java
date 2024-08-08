@@ -12,10 +12,11 @@ import javax.persistence.OneToOne;
 
 /**
  * This class model of the Employee details
+ *
  * @author Gokul
  */
 @Entity
-@Table (name = "Laptop")
+@Table(name = "Laptop")
 public class Laptop {
 
     @Id
@@ -26,15 +27,16 @@ public class Laptop {
     @Column(name = "model", unique = true)
     private String model;
 
-    @OneToOne(mappedBy = "laptop",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "laptop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Employee employee;
 
     public Laptop() {
     }
 
     /**
-     * Laptop constructor 
-     * @param model : laptop model 
+     * Laptop constructor
+     *
+     * @param model : laptop model
      */
     public Laptop(String model) {
         this.id = id;
@@ -47,22 +49,22 @@ public class Laptop {
     }
 
     public void setId(int id) {
-        this. id = id;
+        this.id = id;
     }
 
     public String getModel() {
-	return model;
+        return model;
     }
 
     public void setModel(String model) {
-	this.model = model;
+        this.model = model;
     }
 
     public Employee getEmployee() {
-	return employee;
+        return employee;
     }
 
     public void setEmployee(Employee employee) {
-	this.employee = employee;
+        this.employee = employee;
     }
 }

@@ -16,36 +16,38 @@ import javax.persistence.ManyToMany;
 
 /**
  * This class model of the Project details
+ *
  * @author Gokul
  */
 @Entity
-@Table (name = "project")
+@Table(name = "project")
 public class Project {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     private int projectId;
 
-    @Column(name = "project_name" )
+    @Column(name = "project_name")
     private String projectName;
 
     @Column(name = "Project_is_deleted")
     private boolean isDeleted;
-  
-    @ManyToMany(fetch = FetchType.EAGER)  
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "employee_project",
-	 joinColumns = @JoinColumn(name = "project_id"), 
-	 inverseJoinColumns = @JoinColumn(name = "employee_id")) 
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Set<Employee> employees;
 
     public Project() {
     }
 
     /**
-     * Project constructor 
-     * @param projectName 
-     */ 
+     * Project constructor
+     *
+     * @param projectName : name of the project
+     */
     public Project(String projectName) {
         this.projectId = projectId;
         this.projectName = projectName;
@@ -56,7 +58,7 @@ public class Project {
     public int getProjectId() {
         return projectId;
     }
-  
+
     public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
@@ -83,5 +85,5 @@ public class Project {
 
     public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
-    }   
+    }
 }

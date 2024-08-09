@@ -50,7 +50,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(Employee employee, String laptopModel) throws MyException {
+    public void updateEmployeeAge(Employee employee, LocalDate localDate) throws MyException {
+        employee.setAge(localDate);
+        employeeDao.updateEmployee(employee);
+    }
+
+    @Override
+    public void updateEmployeeLaptop(Employee employee, String laptopModel) throws MyException {
         laptopService.updateLaptopName(laptopModel, employee.getLaptop().getId());
     }
 
@@ -68,10 +74,5 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> retrieveEmployeeByDepartment(int departmentId) throws MyException {
          return employeeDao.retrieveEmployeeByDepartment(departmentId);
  
-    }
-
-    @Override
-    public Department retrieveDepartment(int departmentId) throws MyException {
-        return departmentService.retrieveDepartment(departmentId);
     }
 }

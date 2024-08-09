@@ -16,99 +16,90 @@ public interface EmployeeService {
     /**
      * Get the list of all departments details
      *
-     * @return List<Department> : list of all departments deatils 
-     * @throws MyException
+     * @return List<Department> : list of all departments deatils
+     * @throws MyException;
      */
-    public List<Department> retrieveDepartments() throws MyException;
+    List<Department> retrieveDepartments() throws MyException;
 
     /**
      * Used to create employee with name, dateOfBirth, department id, laptop details
      *
-     * @param employee name
-     * @param employee dateOfBirth
-     * @param employee departmentId 
-     * @param employee laptop details
-     *
-     * @return Employee : details of the employee 
-     * @throws MyException
+     * @param employeeName         name
+     * @param dateOfBirth          dateOfBirth
+     * @param employeeDepartmentId departmentId
+     * @param laptop               laptop details
+     * @return Employee : details of the employee
+     * @throws MyException'
      */
-    public Employee createEmployee(String employeeName, LocalDate dateOfBirth, int employeeDepartmentId, Laptop laptop) throws MyException;
-    
+    Employee createEmployee(String employeeName, LocalDate dateOfBirth, int employeeDepartmentId, Laptop laptop) throws MyException;
+
     /**
      * Delete the employee by its id
      *
      * @param id : delete the employee details by its id
-     *
-     * @return boolean : employee is removed or not 
-     * @throws MyException
+     * @return boolean : employee is removed or not
+     * @throws MyException;
      */
-    public boolean deleteEmployee(int id) throws MyException;
+    boolean deleteEmployee(int id) throws MyException;
 
-   /**
+    /**
      * Get the all employees from database by department id wise
      *
      * @param departmentId : id of the department
-     *
-     * @return list<Employee> : list of the all employees deatils from department 
-     * @throws MyException
+     * @return list<Employee> : list of the all employees deatils from department
+     * @throws MyException;
      */
-    public List<Employee> retrieveEmployeeByDepartment(int departmentId) throws MyException;
-    
+    List<Employee> retrieveEmployeeByDepartment(int departmentId) throws MyException;
+
     /**
      * Get the all employees from database
      *
-     * @return List<Employee> : list of the All employees details  
-     * @throws MyException
+     * @return List<Employee> : list of the employees details
+     * @throws MyException;
      */
-    public List<Employee> retrieveEmployees() throws MyException;
+    List<Employee> retrieveEmployees() throws MyException;
 
     /**
-     * Update employee name, department, age and laptop details
+     * Update employee name details
      *
      * @param employee : employee with new changes
-     * 
-     * @throws MyException
+     * @throws MyException;
      */
-    public void updateEmployee(Employee employee) throws MyException;
+    void updateEmployee(Employee employee) throws MyException;
+
+    /**
+     * Update employee Date of birth details
+     *
+     * @param employee : employee with new dateOfBirth changes
+     * @throws MyException;
+     */
+    void updateEmployeeAge(Employee employee, LocalDate localDate) throws MyException;
 
     /**
      * Update employee laptop model details
      *
-     * @param employee : employee details
+     * @param employee    : employee details
      * @param laptopModel : laptop new model details
-     *
-     * @throws MyException
+     * @throws MyException;
      */
-    public void updateEmployee(Employee employee, String laptopModel) throws MyException;
+    void updateEmployeeLaptop(Employee employee, String laptopModel) throws MyException;
 
     /**
      * Update employee department  details
      *
-     * @param employee : employee details
+     * @param employee       : employee details
      * @param departmentName : new department name details
-     *
-     * @throws MyException
+     * @throws MyException;
      */
-    public void updateEmployeeDepartment(Employee employee, String departmentName) throws MyException ;
-
-        /**
-         * Get the employee details by its id
-         *
-         * @param id : id of the employee
-         *
-         * @return Employee : details of the employee
-         * @throws MyException
-         */
-    public Employee retrieveEmployeeId(int id) throws MyException;
+    void updateEmployeeDepartment(Employee employee, String departmentName) throws MyException;
 
     /**
-     * Get the department details by its id
+     * Get the employee details by its id
      *
-     * @param departmentId : id of the department
-     *
-     * @return department : details of the department
-     * @throws MyException
+     * @param id : id of the employee
+     * @return Employee : details of the employee
+     * @throws MyException;
      */
-    public Department retrieveDepartment(int departmentId) throws MyException;
+    Employee retrieveEmployeeId(int id) throws MyException;
 
 }

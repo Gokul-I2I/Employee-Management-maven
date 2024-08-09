@@ -1,6 +1,5 @@
 package com.ideas2it.ems.laptop.dao;
 
-import com.ideas2it.ems.model.Department;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -20,7 +19,7 @@ import java.util.List;
  * @author Gokul
  */
 public class LaptopDaoImpl implements LaptopDao {
-    private static Logger logger = LogManager.getLogger(LaptopDaoImpl.class);
+    private static final Logger logger = LogManager.getLogger(LaptopDaoImpl.class);
 
     @Override
     public Laptop createLaptop(Laptop laptop) throws MyException {
@@ -33,7 +32,7 @@ public class LaptopDaoImpl implements LaptopDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in laptop adding in DataBase " + laptop.getId());
+            logger.info("Error in laptop adding in DataBase{}", laptop.getId());
             throw new MyException("Error in laptop adding in DataBase : " + laptop.getId(), e);
         }
         return laptop;
@@ -52,7 +51,7 @@ public class LaptopDaoImpl implements LaptopDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in removing laptop in DataBase " + laptopId);
+            logger.info("Error in removing laptop in DataBase{}", laptopId);
             throw new MyException("Error in removing laptop in DataBase " + laptopId, e);
         }
         return flag;
@@ -65,14 +64,9 @@ public class LaptopDaoImpl implements LaptopDao {
      * @throws MyException
      */
     public List<Laptop> retrieveLaptops() throws MyException {
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction();
             return session.createQuery("FROM Laptop ", Laptop.class).list();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Error in View All project in DataBase ");
             throw new MyException("Error in View All project in DataBase ", e);
         }
@@ -81,18 +75,13 @@ public class LaptopDaoImpl implements LaptopDao {
     @Override
     public boolean isValidLaptopId(int laptopId) throws MyException {
         boolean flag = false;
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction();
             Laptop laptop = session.get(Laptop.class, laptopId);
             if (laptop != null) {
                 flag = true;
             }
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            logger.error("Error in laptop id in present or not" + laptopId);
+            logger.info("Error in laptop id in present or not{}", laptopId);
             throw new MyException("Error in laptop id in present or not" + laptopId, e);
         }
         return flag;
@@ -100,17 +89,12 @@ public class LaptopDaoImpl implements LaptopDao {
 
     @Override
     public Employee retrieveLaptop(int laptopId) throws MyException {
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction();
             Laptop laptop = session.get(Laptop.class, laptopId);
             return laptop.getEmployee();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            logger.error("Error in view employees form laptopwise" + laptopId);
-            throw new MyException("Error in view employees form laptopwise" + laptopId, e);
+            logger.info("Error in view employees form laptop{}", laptopId);
+            throw new MyException("Error in view employees form laptop" + laptopId, e);
         }
     }
 
@@ -127,7 +111,7 @@ public class LaptopDaoImpl implements LaptopDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in update laptop Name in DataBase " + laptopId);
+            logger.info("Error in update laptop Name in DataBase{}", laptopId);
             throw new MyException("Error in update laptop Name in DataBase " + laptopId, e);
         }
     }

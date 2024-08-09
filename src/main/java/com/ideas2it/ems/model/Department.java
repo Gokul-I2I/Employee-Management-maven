@@ -42,10 +42,9 @@ public class Department {
     /**
      * Department constructor
      *
-     * @param departmentName
+     * @param departmentName : nae of the department
      */
     public Department(String departmentName) {
-        this.departmentId = departmentId;
         this.departmentName = departmentName.toUpperCase();
         this.employees = new HashSet<Employee>();
         this.isDeleted = false;

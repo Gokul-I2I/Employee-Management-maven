@@ -21,7 +21,8 @@ import com.ideas2it.ems.laptop.service.LaptopServiceImpl;
 public class LaptopController {
     Scanner scanner = new Scanner(System.in);
     LaptopService laptopService = new LaptopServiceImpl();
-    private static Logger logger = LogManager.getLogger(LaptopController.class);
+    private static final Logger LOGGER = LogManager.getLogger(LaptopController.class);
+
 
     /**
      * Create laptop based on user request
@@ -32,7 +33,7 @@ public class LaptopController {
         System.out.print("Enter laptop model id : ");
         String model = scanner.nextLine();
         Laptop laptop = laptopService.createLaptop(model);
-        logger.info("Laptop Added");
+        LOGGER.info("Laptop Added");
         System.out.println("--------------------------------");
         System.out.printf(" %-5s | %-10s %n", laptop.getId(), laptop.getModel());
     }
@@ -44,16 +45,16 @@ public class LaptopController {
      */
     public void deleteLaptop() throws MyException {
         System.out.print("Enter laptop ID : ");
-        int LaptopId = 0;
+        int LaptopId;
         try {
             LaptopId = scanner.nextInt();
         } catch (InputMismatchException e) {
             throw new MyException("Invalid Input : ", e);
         }
         if (laptopService.removeLaptop(LaptopId)) {
-            logger.info("laptop Removed");
+            LOGGER.info("laptop Removed");
         } else {
-            logger.info("laptop Not Found");
+            LOGGER.info("laptop Not Found");
         }
     }
 
@@ -66,7 +67,7 @@ public class LaptopController {
         System.out.println(" (1) View All laptop" + '\n'
                 + " (2) view Employee by laptop ID" + '\n'
                 + " Enter Option : ");
-        int option = 0;
+        int option;
         try {
             option = scanner.nextInt();
         } catch (Exception e) {
@@ -80,7 +81,7 @@ public class LaptopController {
                     System.out.printf(" %-5s | %-10s %n", laptop.getId(), laptop.getModel());
                 }
             } else {
-                logger.info("No laptop Found");
+                LOGGER.info("No laptop Found");
             }
         } else if (option == 2) {
             System.out.print("Enter laptop Id : ");
@@ -88,7 +89,7 @@ public class LaptopController {
             if (laptopService.isValidLaptopId(LaptopId)) {
                 Employee employee = laptopService.retrieveLaptop(LaptopId);
                 if (employee == null) {
-                    logger.info("employee not found");
+                    LOGGER.info("employee not found");
                 } else {
                     if (!employee.getIsDeleted()) {
                         System.out.println("-----------------------------------------");
@@ -96,10 +97,10 @@ public class LaptopController {
                     }
                 }
             } else {
-                logger.info("laptop not found");
+                LOGGER.info("laptop not found");
             }
         } else {
-            logger.info("Choose 1 or 2");
+            LOGGER.info("Choose 1 or 2");
         }
     }
 
@@ -111,7 +112,7 @@ public class LaptopController {
     public void updateLaptop() throws MyException {
         System.out.println(" (1) Change laptop Name" + '\n'
                 + " Enter Option : ");
-        int option = 0;
+        int option;
         try {
             option = scanner.nextInt();
         } catch (Exception e) {
@@ -119,7 +120,7 @@ public class LaptopController {
         }
         if (option == 1) {
             System.out.print("Enter LaptopId : ");
-            int LaptopId = 0;
+            int LaptopId;
             try {
                 LaptopId = scanner.nextInt();
                 scanner.nextLine();
@@ -131,14 +132,13 @@ public class LaptopController {
                 System.out.print("Enter new laptop Name : ");
                 String LaptopName = scanner.nextLine();
                 laptopService.updateLaptopName(LaptopName, LaptopId);
-                logger.info("laptop Name Changed");
+                LOGGER.info("laptop Name Changed");
             } else {
-                logger.info("laptop Id not found");
+                LOGGER.info("laptop Id not found");
             }
         } else {
-            logger.info("Choose 1 only");
+            LOGGER.info("Choose 1 only");
         }
-
     }
 
     /**
@@ -155,32 +155,27 @@ public class LaptopController {
                     + " (5) Back " + '\n'
                     + "************************************");
             System.out.print("Enter the Number : ");
-            int option = 0;
+            int option;
             try {
                 option = scanner.nextInt();
                 if (option == 1) {
                     LaptopController.createLaptop();
-                    flag = false;
                 } else if (option == 2) {
                     LaptopController.deleteLaptop();
-                    flag = false;
                 } else if (option == 3) {
                     LaptopController.viewLaptop();
-                    flag = false;
                 } else if (option == 4) {
                     LaptopController.updateLaptop();
-                    flag = false;
                 } else if (option == 5) {
                     flag = true;
                 } else {
                     System.out.println(" Choose 1 - 5 Only ");
-                    flag = false;
                 }
             } catch (InputMismatchException e) {
-                logger.warn("Invalid Input Choose Number");
+                LOGGER.warn("Invalid Input Choose Number");
                 LaptopController.laptopManagementMenu();
             } catch (MyException e) {
-                logger.error(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
         }
     }

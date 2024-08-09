@@ -16,7 +16,6 @@ import com.ideas2it.ems.project.dao.ProjectDaoImpl;
  */
 public class ProjectServiceImpl implements ProjectService {
     ProjectDao projectDao = new ProjectDaoImpl();
-    EmployeeService employeeService = new EmployeeServiceImpl();
 
     @Override
     public Project createProject(String projectName) throws MyException {
@@ -45,16 +44,13 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void updateProjectName(String projectName, int projectId) throws MyException {
-        projectDao.updateProjectName(projectName, projectId);
-    }
-
-    @Override
-    public Employee isValidEmployeeId(int employeeId) throws MyException {
-        return employeeService.retrieveEmployeeId(employeeId);
+        Project project = new Project(projectName);
+        project.setProjectId(projectId);
+        projectDao.updateProjectName(project);
     }
    
     @Override
     public void addEmployee(Employee employee, int projectId) throws MyException {
-        Project project = projectDao.addEmployee(employee, projectId);
+        projectDao.addEmployee(employee, projectId);
     }
 }

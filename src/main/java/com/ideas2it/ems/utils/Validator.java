@@ -14,7 +14,7 @@ public class Validator {
     /**
      * Calculate age by formatted String
      *
-     * @param employee date of birth (dd/mm/yyyy) format String value
+     * @param  dateOfBirth : (dd/mm/yyyy) format String value
      * 
      * @return Period calculated year, month, days
      */
@@ -37,23 +37,23 @@ public class Validator {
     /**
      * String validation only contain Alphabets
      *
-     * @param name
+     * @param name : employee name
      *     
      * @return name is valid name or not
      */
     public static boolean isValidName(String name) {
-        String regex = "^[a-zA-Z]+([ ][a-zA-Z])*$";
+        String regex = "^[a-zA-Z]+( [a-zA-Z])*$";
         return Pattern.matches(regex, name);
     }   
 
     /**
-     * Calculate the age 
+     * Calculate the age of employee
      *
-     * @param employee date of birth (dd/mm/yyyy) format 
+     * @param dateOfBirth:  date of birth (dd/mm/yyyy) format
      * 
      * @return Period calculated year, month, days
      */
-    public static Period calculateDateOfBirth(LocalDate dateOfBirth) {
+    public static String calculateDateOfBirth(LocalDate dateOfBirth) {
         Period calculateAge = null;
         try {
             LocalDate currentDate = LocalDate.now();
@@ -64,13 +64,13 @@ public class Validator {
         } catch (DateTimeParseException e) {
             System.out.print(" Invalid date format. Please use dd/MM/yyyy.");        
         }
-	return calculateAge;
+        return calculateAge.getYears() + " " + calculateAge.getMonths() + " ";
     }
 
     /**
      * String to date convertion
      *
-     * @param employeeDateOfBirth 
+     * @param employeeDateOfBirth : dateOfBirth of the employee
      *     
      * @return LocalDate : date converted
      */

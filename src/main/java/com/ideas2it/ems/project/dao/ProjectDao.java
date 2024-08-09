@@ -16,7 +16,7 @@ public interface ProjectDao {
     /**
      * Add the project details to the database
      *
-     * @param details of the project
+     * @param project : details of the project
      * @return project : details of the project 
      * @throws MyException
      */
@@ -25,7 +25,7 @@ public interface ProjectDao {
     /**
      * Delete the project by its id
      *
-     * @param id : id of the project
+     * @param projectId : id of the project
      *
      * @return boolean project is removed or not
      * @throws MyException
@@ -43,9 +43,9 @@ public interface ProjectDao {
     /**
      * Get the project id is present or not
      *
-     * @param id : Id of the project
+     * @param projectId : id of the project
      *
-     * @return boolean : project id is contain true or false
+     * @return boolean : project id is contained true or false
      * @throws MyException
      */
     public boolean isValidProjectId(int projectId) throws MyException;
@@ -53,7 +53,7 @@ public interface ProjectDao {
     /**
      * Get all employees by the project id
      *
-     * @param  id of the project
+     * @param  projectId of the project
      *     
      * @return Set<Employee> : list of the all employees details in set
      * @throws MyException
@@ -64,7 +64,7 @@ public interface ProjectDao {
      * Add employee to the project
      *
      * @param employee details
-     * @param project details
+     * @param projectId details
      *
      * @return project details
      * @throws MyException
@@ -74,9 +74,8 @@ public interface ProjectDao {
     /**
      * Update the project name by its id
      *
-     * @param proejct id : id of the project
-     * @param projectName : new name of the project
+     * @param project : new project details
      * @throws MyException
      */
-    public void updateProjectName(String projectName, int projectId) throws MyException;
+    public void updateProjectName(Project project) throws MyException;
 }

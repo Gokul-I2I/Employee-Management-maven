@@ -39,9 +39,7 @@ public class Laptop {
      * @param model : laptop model
      */
     public Laptop(String model) {
-        this.id = id;
         this.model = model;
-        this.employee = employee;
     }
 
     public int getId() {

@@ -15,7 +15,7 @@ public interface ProjectService {
     /**
      * Create the Project 
      *
-     * @param project name
+     * @param projectName: name of the project
      *
      * @return Project : project details
      * @throws MyException
@@ -25,7 +25,7 @@ public interface ProjectService {
     /**
      * Delete project by its id
      *
-     * @param id : id of the project
+     * @param projectId : id of the project
      *
      * @return boolean project is soft deleted true or false
      * @throws MyException
@@ -41,11 +41,11 @@ public interface ProjectService {
     public List<Project> retrieveProjects() throws MyException;
 
     /**
-     * Get the project Id is valid or not
+     * Get the project id is valid or not
      *
-     * @param id : project Id
+     * @param projectId : project Id
      *
-     * @return boolean : project id is contain true or false
+     * @return boolean : project id is contained true or false
      * @throws MyException
      */
     public boolean isValidProjectId(int projectId) throws MyException;
@@ -53,7 +53,7 @@ public interface ProjectService {
     /**
      * Get the employee details by its project id
      *
-     * @param id : project id
+     * @param projectId : project id
      *
      * @return Set<Employee> : list of all employees details in Set
      * @throws MyException
@@ -63,27 +63,17 @@ public interface ProjectService {
     /**
      * Update project name by its id
      *
-     * @param new name of the project
-     * @param id of the project
+     * @param projectName :  name of the project
+     * @param projectId of the project
      * @throws MyException
      */
     public void updateProjectName(String projectName, int projectId) throws MyException;
 
     /**
-     * Get the employee details by its id
-     *
-     * @param employee id
-     *   
-     * @return Employee : deatils of the employee
-     * @throws MyException
-     */
-    public Employee isValidEmployeeId(int employeeId) throws MyException;
-
-    /**
      * Add employee details to the project
      *
      * @param projectId : id
-     * @param details of the employee
+     * @param employee: details of the employee
      * @throws MyException
      */
     public void addEmployee(Employee employee, int projectId) throws MyException; 

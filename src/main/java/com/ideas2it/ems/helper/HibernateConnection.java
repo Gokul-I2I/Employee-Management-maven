@@ -19,7 +19,7 @@ public class HibernateConnection {
      * @throws MyException
      */
     public static Session connection() throws MyException {
-        Session session = null;
+        Session session;
         try {
             Configuration configuration = new Configuration();
             configuration.configure("Hibernate.cfg.xml");

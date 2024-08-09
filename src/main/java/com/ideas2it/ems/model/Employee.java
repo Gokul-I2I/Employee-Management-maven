@@ -138,7 +138,7 @@ public class Employee {
         }
         for (Project project : projects) {
             if (!project.getIsDeleted()) {
-                stringBuilder.append(project.getProjectName() + " ");
+                stringBuilder.append(project.getProjectName()).append(" ");
             }
         }
         return stringBuilder.toString();

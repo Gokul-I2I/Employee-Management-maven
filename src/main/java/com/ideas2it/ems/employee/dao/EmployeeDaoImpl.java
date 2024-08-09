@@ -17,7 +17,7 @@ import com.ideas2it.ems.model.Employee;
  * @author Gokul
  */
 public class EmployeeDaoImpl implements EmployeeDao {
-    private static final Logger logger = LogManager.getLogger(EmployeeDaoImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(EmployeeDaoImpl.class);
 
     @Override
     public Employee createEmployee(Employee employee) throws MyException {
@@ -30,7 +30,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in Employee adding in DataBase " + employee.getId() + employee.getName());
+            LOGGER.info("Error in Employee adding in DataBase{} ", employee.getId() + employee.getName());
             throw new MyException("Error in Employee adding in DataBase " + employee.getId() + employee.getName(), e);
         }
         return employee;
@@ -52,7 +52,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in delete department by its id : " + id);
+            LOGGER.error("Error in delete department by its id {}", id);
             throw new MyException("Error in delete department by its id : " + id, e);
         }
         return flag;
@@ -60,48 +60,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee retrieveEmployeeId(int id) throws MyException {
-        Employee employee = null;
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction(); 
-            employee = session.get(Employee.class, id);
+            return session.get(Employee.class, id);
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            logger.error("Error in get employee by id : " + id);
+            LOGGER.error("Error in get employee by id {} ", id);
             throw new MyException("Error in get employee by id : " + id, e);
         }
-        return employee;
     }
 
     @Override
     public List<Employee> retrieveEmployees() throws MyException  {
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction();
             return session.createQuery("FROM Employee WHERE employee_is_deleted = false", Employee.class).list();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            logger.error("Error in View All employees");
+            LOGGER.error("Error in View All employees");
             throw new MyException("Error in View All employees ", e);
         }
     }
 
     @Override
     public List<Employee> retrieveEmployeeByDepartment(int departmentId) throws MyException {
-        Transaction transaction = null;
         try (Session session = HibernateConnection.connection()) {
-            transaction = session.beginTransaction();
             return session.createQuery("FROM Employee WHERE department_id  = " + departmentId, Employee.class).list();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            logger.error("Error in view employees form departmentwise : " + departmentId);
-            throw new MyException("Error in view employees form departmentwise : " + departmentId, e);
+            LOGGER.error("Error in view employees form department {} ", departmentId);
+            throw new MyException("Error in view employees form department : " + departmentId, e);
         }
     }
 
@@ -116,7 +99,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error in update employee in DataBase " + employee.getName() + employee.getId());
+            LOGGER.error("Error in update employee in DataBase {} ",employee.getName() + employee.getId());
             throw new MyException("Error in update employee in DataBase " + employee.getName() + employee.getId(), e);
         }        
     }
